@@ -1,0 +1,15 @@
+{
+  "dataStudio": {
+    "name": "Generic HTTP Connector",
+    "company": "Hasso Plattner Institute",
+    "companyUrl": "https://hpi.de",
+    "logoUrl": "https://hpi.de/fileadmin/user_upload/hpi/bilder/logos/hpi_logo_web.jpg",
+    "addonUrl": "https://github.com/openHPI/google-data-studio-connector",
+    "supportUrl": "https://github.com/openHPI/google-data-studio-connector/issues",
+    "description": "Connect to a server-side implementation of a Google Data Studio connector."
+  },
+  "timeZone": "Europe/Paris",
+  "dependencies": {
+  },
+  "exceptionLogging": "STACKDRIVER"
+}
