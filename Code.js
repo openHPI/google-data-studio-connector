@@ -4,6 +4,10 @@ function getAuthType() {
   };
 }
 
+function isAdminUser() {
+  return true;
+}
+
 function getConfig(request) {
   return {
     configParams: [
@@ -38,9 +42,9 @@ function fetchData(url, request) {
 }
 
 function buildQueryString(params) {
-  return Object.keys(obj).map(function(key) {
-  	return buildSingleQueryString(key, obj[key]);
-  });
+  return Object.keys(params).map(function(key) {
+  	return buildSingleQueryString(key, params[key]);
+  }).join('&');
 }
 
 function buildSingleQueryString(key, value, encodedKey) {
@@ -56,14 +60,14 @@ function buildSingleQueryString(key, value, encodedKey) {
   // Builds query string for each item in value, if it is an array
   if(Array.isArray(value)) {
     return value.map(function(item) {
-      return buildQueryString(key + '[]', item, true);
+      return buildSingleQueryString(key + '[]', item, true);
     }).join('&');
   }
 
   // Builds nested query string since value is hash
   return Object.keys(value).map(function(innerKey) {
     var newKey = key + '[' + encodeURIComponent(innerKey) + ']';
-  	return buildQueryString(newKey, value[innerKey], true);
+  	return buildSingleQueryString(newKey, value[innerKey], true);
   }).join('&');
 }
 
